@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,8 +15,8 @@
 				<td>비밀번호</td>
 				<td><input type="password" name="password" value=""></td>
 				<td><button type="submit">삭제</button></td>
-				<td>액션</td>
 				<td><input type="hidden" name="action" value="delete"></td>
+				<td><input type="hidden" name="no" value="<%=request.getParameter("no") %>"></td>
 			</tr>
 		</table>
 	</form>

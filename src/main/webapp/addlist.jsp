@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="java.util.List" %>
-<%@ page import="com.javaex.vo.GuestVO" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.javaex.vo.GuestVO"%>
 
 <%
-List<GuestVO> guestList = (List<GuestVO>)request.getAttribute("guestList");
-	System.out.println("여기는 jsp");
-	System.out.println(guestList);
+List<GuestVO> guestList = (List<GuestVO>) request.getAttribute("guestList");
 %>
 <!DOCTYPE html>
 <html>
@@ -28,28 +26,30 @@ List<GuestVO> guestList = (List<GuestVO>)request.getAttribute("guestList");
 				<td colspan="4"><textarea cols="72" rows="5" name="content"></textarea></td>
 			</tr>
 			<tr>
-				<td colspan="4"><button type="hidden" name="action" value="write">등록</button></td>
+				<td colspan="4"><button type="hidden" name="action"
+						value="write">등록</button></td>
 			</tr>
 		</table>
 	</form>
 	<br>
-
 	<%
-	for(int i=0; i<guestList.size(); i++){
+	for (int i = 0; i < guestList.size(); i++) {
 	%>
-	<table border="1" width="540px">
-		<tr>
-			<td>[<%=guestList.get(i).getNo()%>]</td>
-			<td><%=guestList.get(i).getName()%></td>
-			<td><%=guestList.get(i).getRegDate()%></td>
-			<td><a href="http://localhost:8080/guestbook/gbc?action=dForm">삭제</a></td>
-		</tr>
-		<tr>
-			<td colspan="4"><%=guestList.get(i).getContent()%></td>
-		</tr>
-	</table>
-	<br>
-	<%	
+		<table border="1" width="540px">
+			<tr>
+				<td>[<%=guestList.get(i).getNo()%>]</td>
+				<td><%=guestList.get(i).getName()%></td>
+				<td><%=guestList.get(i).getRegDate()%></td>
+				<td>
+				<a href="http://localhost:8080/guestbook/gbc?action=dForm&no=<%= guestList.get(i).getNo() %>">삭제</a>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4"><%=guestList.get(i).getContent()%></td>
+			</tr>
+		</table>
+		<br>
+	<%
 	}
 	%>
 	<br>

@@ -21,7 +21,6 @@ public class GuestbookController extends HttpServlet {
     public GuestbookController() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		//로직
 		System.out.println("GuestbookController");
 		
@@ -70,18 +69,19 @@ public class GuestbookController extends HttpServlet {
 		}else if("dForm".equals(action)) {//삭제폼으로
 			
 			System.out.println("삭제폼");
-			
+						
 			RequestDispatcher rd = request.getRequestDispatcher("/deleteForm.jsp");
 			rd.forward(request, response);
 			
 		}else if("delete".equals(action)) {//삭제폼으로
 			
 			System.out.println("삭제");
-			
+
+			int no = Integer.parseInt(request.getParameter("no"));
 			String password = request.getParameter("password");
 			
 			GuestbookDAO guestbookDAO = new GuestbookDAO();
-			guestbookDAO.guestDelete(password);
+			guestbookDAO.guestDelete(no,password);
 			
 			//리다이렉트
 			response.sendRedirect("http://localhost:8080/guestbook/gbc?action=addlist");

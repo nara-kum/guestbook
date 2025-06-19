@@ -144,7 +144,7 @@ public class GuestbookDAO {
 		return count;
 	}
 
-	public int guestDelete(String password) {
+	public int guestDelete(int no, String password) {
 		
 		int count = -1;
 		
@@ -158,10 +158,12 @@ public class GuestbookDAO {
 			query+="delete ";
 			query+="from guestbook ";
 			query+="where password = ? ";
+			query+="and no = ? " ;
 						
 			//바인딩
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1,password);
+			pstmt.setInt(2,no);
 			
 			//실행하고 처리
 			count = pstmt.executeUpdate();
