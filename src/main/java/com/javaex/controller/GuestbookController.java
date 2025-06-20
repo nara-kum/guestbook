@@ -47,7 +47,7 @@ public class GuestbookController extends HttpServlet {
 			
 			//(2)list.jsp에 request객체와 response객체를 보낸다
 			//포워드
-			RequestDispatcher rd = request.getRequestDispatcher("/addlist.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/addlist.jsp");
 			rd.forward(request, response);
 			
 		} else if("write".equals(action)) {//리스트
@@ -70,7 +70,7 @@ public class GuestbookController extends HttpServlet {
 			
 			System.out.println("삭제폼");
 						
-			RequestDispatcher rd = request.getRequestDispatcher("/deleteForm.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/deleteForm.jsp");
 			rd.forward(request, response);
 			
 		}else if("delete".equals(action)) {//삭제폼으로
@@ -85,7 +85,6 @@ public class GuestbookController extends HttpServlet {
 			
 			//리다이렉트
 			response.sendRedirect("http://localhost:8080/guestbook/gbc?action=addlist");
-			
 			
 		}
 		
